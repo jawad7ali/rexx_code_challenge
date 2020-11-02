@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sales</title>
+        <!-- Datatable CSS -->
+        <link href='DataTables/datatables.min.css' rel='stylesheet' type='text/css'>
+
+        <!-- jQuery Library -->
+        <script src="jquery-3.3.1.min.js"></script>
+        
+        <!-- Datatable JS -->
+        <script src="DataTables/datatables.min.js"></script>
+        
+    </head>
+    <body >
+
+        <div  style="margin-top: 5rem;">
+            <!-- Custom Filter -->
+            <center> <a href="data-render.php">Import Json to DB</a></center>  
+            </table>
+            
+            <!-- Table -->
+            <table id='saleTable' class='display dataTable'>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                </tr>
+                </thead>
+                
+            </table>
+        </div>
+        
+        <!-- Script -->
+        <script>
+        $(document).ready(function(){
+            var dataTable = $('#saleTable').DataTable({
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                //'searching': false, // Remove default Search Control
+                'ajax': {
+                    'url':'ajaxfile.php',
+                    'data': function(data){ }
+                },
+                'columns': [
+                    { data: 'sale_id' },
+                    { data: 'customer_name' },
+                    { data: 'customer_mail' },
+                    { data: 'product_name' },
+                    { data: 'product_price' },
+                ]
+            });
+
+        });
+        </script>
+    </body>
+
+</html>
